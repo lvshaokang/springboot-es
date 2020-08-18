@@ -2,7 +2,7 @@
 
 es:
   config:
-    host:
-    port:
+    host: es001
+    port: 9200
     username:
     password:

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lsk.es.document.ProfileDocument;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.search.join.ScoreMode;
+import org.elasticsearch.action.DocWriteRequest;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetRequest;
@@ -16,6 +17,7 @@ import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.Operator;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -86,6 +88,7 @@ public class ProfileService {
     public List<ProfileDocument> findAll() throws Exception {
         SearchRequest searchRequest = buildSearchRequest(INDEX, TYPE);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        // 指定 matchAllQuery
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         searchRequest.source(searchSourceBuilder);
         SearchResponse searchResponse =
@@ -98,6 +101,7 @@ public class ProfileService {
         searchRequest.indices(INDEX);
         searchRequest.types(TYPE);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        // 使用 match-query
         MatchQueryBuilder matchQueryBuilder = QueryBuilders
                 .matchQuery("name", name)
                 .operator(Operator.AND);

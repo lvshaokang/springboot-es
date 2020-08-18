@@ -23,12 +23,19 @@ public class ProfileController {
     @Autowired
     private ProfileService service;
 
-    @PostMapping("/create")
+    @GetMapping("/test")
+    public String test() {
+        return "Success";
+    }
+
+    // 创建文档
+    @PostMapping("/es/create")
     public ResponseEntity createProfile(@RequestBody ProfileDocument document) throws Exception {
         return new ResponseEntity(service.createProfileDocument(document), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    // 更新文档
+    @PutMapping("/es/update")
     public ResponseEntity updateProfile(@RequestBody ProfileDocument document) throws Exception {
         return new ResponseEntity(service.updateProfile(document), HttpStatus.CREATED);
     }
@@ -38,6 +45,7 @@ public class ProfileController {
         return service.findById(id);
     }
 
+    // 查询索引的所有文档
     @GetMapping
     public List<ProfileDocument> findAll() throws Exception {
         return service.findAll();
@@ -48,6 +56,8 @@ public class ProfileController {
         return service.searchByTechnology(technology);
     }
 
+    // /api/v1/profiles/name-search?name=yiming
+    // 根据name查询文档
     @GetMapping(value = "/api/v1/profiles/name-search")
     public List<ProfileDocument> searchByName(@RequestParam(value = "name") String name) throws Exception {
         return service.findProfileByName(name);

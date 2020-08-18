@@ -8,6 +8,7 @@
         <module>es-example01</module>
         <module>es-example02</module>
         <module>es-sdk</module>
+        <module>high-level</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -1,6 +1,9 @@
 package com.lsk.es.sdk;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 
 /**
@@ -15,9 +18,16 @@ public class EsClient {
 
     protected RestHighLevelClient client;
 
-    public static class Builder {
+    private String hostname;
+    private int port;
+    private String schema;
 
-        protected
+    public RestClientBuilder restClientBuilder() {
+        RestClientBuilder builder = RestClient.builder(new HttpHost(hostname, port, schema));
+
+        builder.set
+
     }
+
 
 }

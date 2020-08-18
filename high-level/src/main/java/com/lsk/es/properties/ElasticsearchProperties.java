@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO:
+ * 加载es配置文件
  *
  * @author red
  * @class_name ElasticsearchProperties
