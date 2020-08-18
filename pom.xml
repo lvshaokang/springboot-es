@@ -5,6 +5,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>rest-template</module>
+        <module>es-example01</module>
+        <module>es-example02</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,6 +22,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
 
