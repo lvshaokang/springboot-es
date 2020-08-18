@@ -7,6 +7,7 @@
         <module>rest-template</module>
         <module>es-example01</module>
         <module>es-example02</module>
+        <module>es-sdk</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
