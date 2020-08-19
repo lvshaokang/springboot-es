@@ -6,6 +6,8 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 
+import java.io.IOException;
+
 /**
  * TODO
  *
@@ -21,6 +23,20 @@ public class EsClient {
     private String hostname;
     private int port;
     private String schema;
+
+    public RestHighLevelClient getClient() {
+        return client;
+    }
+
+    public void close() {
+        if (client != null) {
+            try {
+                client.close();
+            } catch (IOException e) {
+                log.error(e.getMessage(), e);
+            }
+        }
+    }
 
     public RestClientBuilder restClientBuilder() {
         RestClientBuilder builder = RestClient.builder(new HttpHost(hostname, port, schema));
